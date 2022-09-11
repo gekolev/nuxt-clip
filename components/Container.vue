@@ -25,6 +25,8 @@ export default {
       index: 0,
       CellWidth: 81,
       CellHeight: 80,
+      screenWidth: 0,
+      screenHeight: 0,
     };
   },
   methods: {
@@ -34,25 +36,33 @@ export default {
     },
     client_X(n) {
       this.index = n;
-      return this.x - this.CellWidth * this.getXNumber(n);
+      var screenWidth = this.screenWidth;
+      var cellWidth = this.CellWidth;
+      var halfScreen = screenWidth / 2;
+      var halfCell = cellWidth / 2;
+      return this.x - this.CellWidth * this.getXNumber(n) - (halfScreen - halfCell - (this.CellWidth * 2));
     },
     client_Y(n) {
       this.index = n;
-      return this.y - this.CellHeight * this.getYNumber(n);
+      var screenHeight = this.screenHeight;
+      var cellHeight = this.CellHeight;
+      var halfScreen = screenHeight / 2;
+      var halfCell = cellHeight / 2;
+      return this.y - this.CellHeight * this.getYNumber(n) - (halfScreen - halfCell - (this.CellHeight * 2)) ;
     },
     getYNumber(n) {
       return Math.ceil(n / 5);
     },
     getXNumber(n) {
-      var cullom = 5;
+      var column = 5;
       var row = 5;
-      var max = cullom * row;
+      var max = column * row;
       var number = 0;
       for (let i = 1; i <= max; i++) {
         if (i == n) {
-          number = i % cullom;
+          number = i % column;
           if (number == 0) {
-            number = cullom;
+            number = column;
           }
         }
       }
@@ -62,6 +72,8 @@ export default {
   mounted() {
     var Container = document.getElementById("Container");
     Container.addEventListener("mousemove", this.mouseMove);
+    this.screenWidth =  window.innerWidth
+    this.screenHeight = window.innerHeight
   },
 };
 </script>
@@ -75,5 +87,6 @@ export default {
   max-width: 28rem;
   display: grid;
   position: relative;
+  margin:auto;
 }
 </style>
