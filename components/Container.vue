@@ -78,7 +78,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .images-holder{
   width: 100%;
   height: 449px;

@@ -5,7 +5,7 @@
   >
     <div class="small-img-holder">
       <img
-        class="small-img"
+        class="small-img1"
         :src="require(`~/assets/images/small.png`)"
         alt=""
       />
@@ -109,7 +109,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .container{
   width: 100%;
   height: 100%;
@@ -123,7 +123,7 @@ export default {
   width: 100%;
   height: 100%;
 }
-.small-img{
+.small-img1{
   width: 100%;
   height: 100%;
   position: absolute;
